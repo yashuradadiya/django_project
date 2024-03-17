@@ -1,0 +1,206 @@
+{% load static %}
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+    <a class="sidebar-brand brand-logo" href="/myadmin/home" style="text-decoration: none;">
+      <font style="color: aliceblue; letter-spacing: 2px; font-weight: bolder; text-decoration: none;">Ultras.</font>
+    </a>
+    <a class="sidebar-brand brand-logo-mini" href="/myadmin/home" style="text-decoration: none;">
+      <font style="color: aliceblue; letter-spacing: 2px; font-weight: bolder; text-decoration: none;">U.</font>
+    </a>
+  </div>
+  <ul class="nav">
+    <li class="nav-item profile">
+        <div class="profile-desc">
+          <div class="profile-pic">
+            <div class="count-indicator">
+              <img class="img-xs rounded-circle " src="{% if user_image %}/media/{{user_image}}{% else %}{% static 'assets/images/faces-clipart/pic-2.png' %}{% endif %}" alt="">
+              <span class="count bg-success"></span>
+            </div>
+            <div class="profile-name">
+              <h5 class="mb-0 font-weight-normal">{{user_name}}
+              </h5>
+              <span>{{user_skill}}</span>
+            </div>
+          </div>
+        </div>
+    </li>
+
+    <!-- Dashbord -->
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="/myadmin/home">
+        <span class="menu-icon">
+          <i class="mdi mdi-speedometer"></i>
+        </span>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <!-- slider -->
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+          <i class="mdi mdi-image-area"></i>
+        </span>
+        <span class="menu-title">Slider</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/view_slider">
+              <span class="menu-icon">
+                <i class="mdi mdi-folder-multiple-image"></i>
+              </span>
+              <span class="menu-title">View Slider</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/add_slider">
+              <span class="menu-icon">
+                <i class="mdi mdi-upload"></i>
+              </span>
+              <span class="menu-title">Add Slider</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- Category -->
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+          <i class="mdi mdi-image-area"></i>
+        </span>
+        <span class="menu-title">Category</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic1">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/view_category">
+              <span class="menu-icon">
+                <i class="mdi mdi-folder-multiple-image"></i>
+              </span>
+              <span class="menu-title">View Category</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/add_category">
+              <span class="menu-icon">
+                <i class="mdi mdi-upload"></i>
+              </span>
+              <span class="menu-title">Add Category</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- tag -->
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+          <i class="mdi mdi-image-area"></i>
+        </span>
+        <span class="menu-title">Tag</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic2">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/view_tag">
+              <span class="menu-icon">
+                <i class="mdi mdi-folder-multiple-image"></i>
+              </span>
+              <span class="menu-title">View Tag</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/add_tag">
+              <span class="menu-icon">
+                <i class="mdi mdi-upload"></i>
+              </span>
+              <span class="menu-title">Add Tag</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- brand -->
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+          <i class="mdi mdi-image-area"></i>
+        </span>
+        <span class="menu-title">Brand</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic3">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/view_brand">
+              <span class="menu-icon">
+                <i class="mdi mdi-folder-multiple-image"></i>
+              </span>
+              <span class="menu-title">View Brand</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/add_brand">
+              <span class="menu-icon">
+                <i class="mdi mdi-upload"></i>
+              </span>
+              <span class="menu-title">Add Brand</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- product -->
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+          <i class="mdi mdi-image-area"></i>
+        </span>
+        <span class="menu-title">Product</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic4">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/view_product">
+              <span class="menu-icon">
+                <i class="mdi mdi-folder-multiple-image"></i>
+              </span>
+              <span class="menu-title">View Product</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/myadmin/add_product">
+              <span class="menu-icon">
+                <i class="mdi mdi-upload"></i>
+              </span>
+              <span class="menu-title">Add Product</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- view user -->
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="/myadmin/view_user">
+        <span class="menu-icon">
+          <i class="mdi mdi-speedometer"></i>
+        </span>
+        <span class="menu-title">View User</span>
+      </a>
+    </li>
+    <!-- view cart -->
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="/myadmin/view_cart">
+        <span class="menu-icon">
+          <i class="mdi mdi-speedometer"></i>
+        </span>
+        <span class="menu-title">View Cart</span>
+      </a>
+    </li>
+  </ul>
+</nav>

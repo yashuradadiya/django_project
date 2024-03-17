@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Product Add</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_sidebar.html -->
+      {% include 'sidebar.html' %}
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_navbar.html -->
+        {% include 'header_admin.html' %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Slider </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/myadmin/home">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Product</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="product name" name="{{data.product_name.name}}" value="{% if data.product_name.value %}{{data.product_name.value}}{% endif %}" >
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Description" name="{{data.description.name}}">{% if data.description.value %}{{data.description.value}}{% endif %}</textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Category</label>
+                        <select class="form-control" id="exampleSelectGender" name="{{data.category.name}}">
+                          {% for row in cats %}
+                          <option value="{{row.id}}" {% if row.id == data.category.value %} selected {% endif %}>{{row.category}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Tag</label>
+                        <select class="form-control" id="exampleSelectGender" name="{{data.tag.name}}">
+                          {% for row in tags %}
+                          <option value="{{row.id}}" {% if row.id == data.tag.value %} selected {% endif %}>{{row.tag}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Brand</label>
+                        <select class="form-control" id="exampleSelectGender" name="{{data.brand.name}}">
+                          {% for row in brands %}
+                          <option value="{{row.id}}" {% if data.brand.value == row.id %} selected {% endif %} >{{row.brand}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Color</label>
+                        <select class="form-control" id="exampleSelectGender" name="{{data.color.name}}">
+                          <option value="White" {% if data.color.value == 'White' %} selected {% endif %}>White</option>
+                          <option value="Black" {% if data.color.value == 'Black' %} selected {% endif %}>Black</option>
+                          <option value="Pink" {% if data.color.value == 'Pink' %} selected {% endif %}>Pink</option>
+                          <option value="Blue" {% if data.color.value == 'Blue' %} selected {% endif %}>Blue</option>
+                          <option value="Green" {% if data.color.value == 'Green' %} selected {% endif %}>Green</option>
+                          <option value="Yellow" {% if data.color.value == 'Yellow' %} selected {% endif %}>Yellow</option>
+                          <option value="Brown" {% if data.color.value == 'Brown' %} selected {% endif %}>Brown</option>
+                          <option value="Red" {% if data.color.value == 'Red' %} selected {% endif %}>Red</option>
+                          <option value="Purlpe" {% if data.color.value == 'Purlpe' %} selected {% endif %}>Purlpe</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelectGender">Size</label>
+                        <select class="form-control" id="exampleSelectGender" name="{{data.size.name}}">
+                          <option value="xs" {% if data.size.value == 'xs' %} selected {% endif %}>XS</option>
+                          <option value="s" {% if data.size.value == 's' %} selected {% endif %}>S</option>
+                          <option value="m" {% if data.size.value == 'm' %} selected {% endif %}>M</option>
+                          <option value="l" {% if data.size.value == 'l' %} selected {% endif %}>L</option>
+                          <option value="xl" {% if data.size.value == 'xl' %} selected {% endif %}>XL</option>
+                          <option value="xxl" {% if data.size.value == 'xxl' %} selected {% endif %}>XXL</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelectGender">quantity</label>
+                        <select class="form-control" id="exampleSelectGender" name="{{data.material.name}}">
+                          <option value="Cotten" {% if data.material.value == 'Cotten' %} selected {% endif %}>Cotten</option>
+                          <option value="Denim" {% if data.material.value == 'Denim' %} selected {% endif %}>Denim</option>
+                          <option value="Silk" {% if data.material.value == 'Silk' %} selected {% endif %}>Silk</option>
+                          <option value="Chiffon" {% if data.material.value == 'Chiffon' %} selected {% endif %}> Chiffon</option>
+                          <option value="Velvet" {% if data.material.value == 'Velvet' %} selected {% endif %}>Velvet</option>
+                          <option value="Taffeta" {% if data.material.value == 'Taffeta' %} selected {% endif %}>Taffeta</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">price</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Title" name="{{data.price.name}}" value="{% if data.price.value %}{{data.price.value}}{% endif %}" >
+                      </div>   
+                      <div class="form-group">
+                        <label for="exampleInputName1">quantity</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Title" name="{{data.quantity.name}}" value="{% if data.quantity.value %}{{data.quantity.value}}{% endif %}" >
+                      </div>   
+                      <div class="form-group">
+                        <label>File upload</label>
+                        <input type="file" name="{{data.images.name}}" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary me-2" name="save" value="save">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{% static 'assets/vendors/select2/select2.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/typeahead.js/typeahead.bundle.min.js' %}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'assets/js/off-canvas.js' %}"></script>
+    <script src="{% static 'assets/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'assets/js/misc.js' %}"></script>
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+    <script src="{% static 'assets/js/todolist.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{% static 'assets/js/file-upload.js' %}"></script>
+    <script src="{% static 'assets/js/typeahead.js' %}"></script>
+    <script src="{% static 'assets/js/select2.js' %}"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

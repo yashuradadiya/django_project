@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Corona Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css'  %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/jquery-bar-rating/css-stars.css'  %}">
+    <!-- End plugin css for this page -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'  %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png'  %}" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_sidebar.html -->
+      {% include 'sidebar.html' %}
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_navbar.html -->
+       {% include 'header_admin.html' %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Profile </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/myadmin">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="border-bottom text-center pb-4">
+                          <img src="{% if user_image %}/media/{{user_image}}{% else %}{% static 'assets/images/faces-clipart/pic-2.png' %}{% endif %}" alt="profile" class="img-lg rounded-circle mb-3" />
+                          <div class="d-flex justify-content-between">
+                            <div>
+                              <h3>{{rows.name}}</h3>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="py-4">
+                          {% if rows.email %}
+                          <p class="clearfix">
+                            <span class="float-left"> Email : </span>
+                            <span class="float-right text-muted"> {{rows.email}} </span>
+                          </p>
+                          {% endif %}
+                          {% if rows.contact %}
+                          <p class="clearfix">
+                            <span class="float-left"> Phone : </span>
+                            <span class="float-right text-muted"> {{rows.contact}} </span>
+                          </p>
+                          {% endif %}
+                          {% if rows.address1 and rows.address2 and rows.city and rows.state and rows.country and rows.pincode %}
+                          <p class="clearfix">
+                            <span class="float-left"> Address : </span>
+                            <span class="float-right text-muted"> {{rows.address1}} , {{rows.address2}} , {{rows.city}} ,{{rows.state}} , {{rows.country}} - {{rows.pincode}} . </span>
+                          </p>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'assets/vendors/js/vendor.bundle.base.js'  %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{% static 'assets/vendors/jquery-bar-rating/jquery.barrating.min.js'  %}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'assets/js/off-canvas.js'  %}"></script>
+    <script src="{% static 'assets/js/hoverable-collapse.js'  %}"></script>
+    <script src="{% static 'assets/js/misc.js'  %}"></script>
+    <script src="{% static 'assets/js/settings.js'  %}"></script>
+    <script src="{% static 'assets/js/todolist.js'  %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{% static 'assets/js/profile-demo.js'  %}"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Corona Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/select2/select2.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css' %}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_sidebar.html -->
+    {% include 'sidebar.html' %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_navbar.html -->
+      {% include 'header_admin.html' %}
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title"> Profile Settings </h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/myadmin">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Settings</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <form class="form-sample" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="{{Cdata.password.name}}" value="{{Cdata.password.value}}">
+                    <p class="card-description"> Personal info </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Name </label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="{{Cdata.name.name}}" value="{{Cdata.name.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Email</label>
+                          <div class="col-sm-9">
+                            <input type="email" class="form-control" name="{{Cdata.email.name}}" value="{{Cdata.email.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Gender</label>
+                          <div class="col-sm-4">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="{{Cdata.gender.name}}"
+                                  id="membershipRadios1" value="Male" {% if Cdata.gender.value == 'Male' %} checked {% endif %}> Male </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="{{Cdata.gender.name}}"
+                                  id="membershipRadios2" value="Female" {% if Cdata.gender.value == 'Female' %} checked {% endif %}> Female </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Date of Birth</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="dd/mm/yyyy" name="{{Cdata.bdate.name}}" value="{{Cdata.bdate.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Skills</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" style="color: #FFFFFF;" name="{{Cdata.skills.name}}">
+                              <option value="Order Taker" {% if Cdata.skills.value == 'Order Taker' %} selected {% endif %}>Order Taker</option>
+                              <option value="Finance" {% if Cdata.skills.value == 'Finance' %} selected {% endif %}>Finance</option>
+                              <option value="Sales" {% if Cdata.skills.value == 'Sales' %} selected {% endif %}>Sales</option>
+                              <option value="Manager" {% if Cdata.skills.value == 'Manager' %} selected {% endif %}>Manager</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Contact</label>
+                          <div class="col-sm-9">
+                            <input type="tel" class="form-control" name="{{Cdata.contact.name}}" value="{{Cdata.contact.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="card-description"> Address </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Block No.</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="{{Cdata.address1.name}}" value="{{Cdata.address1.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">State</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="{{Cdata.state.name}}" value="{{Cdata.state.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Socity Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="{{Cdata.address2.name}}" value="{{Cdata.address2.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Postcode</label>
+                          <div class="col-sm-9">
+                            <input type="tel" class="form-control" name="{{Cdata.pincode.name}}" value="{{Cdata.pincode.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">City</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="{{Cdata.city.name}}" value="{{Cdata.city.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label"> Country </label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="{{Cdata.country.name}}" value="{{Cdata.country.value}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>File upload</label>
+                          <input type="file" name="{{Cdata.image.name}}" class="file-upload-default">
+                          <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                            <span class="input-group-append">
+                              <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                      <button type="submit" class="btn btn-primary me-2" name="save" value="save">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="{% static 'assets/vendors/select2/select2.min.js' %}"></script>
+  <script src="{% static 'assets/vendors/typeahead.js/typeahead.bundle.min.js' %}"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{% static 'assets/js/off-canvas.js' %}"></script>
+  <script src="{% static 'assets/js/hoverable-collapse.js' %}"></script>
+  <script src="{% static 'assets/js/misc.js' %}"></script>
+  <script src="{% static 'assets/js/settings.js' %}"></script>
+  <script src="{% static 'assets/js/todolist.js' %}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="{% static 'assets/js/file-upload.js' %}"></script>
+  <script src="{% static 'assets/js/typeahead.js' %}"></script>
+  <script src="{% static 'assets/js/select2.js' %}"></script>
+  <!-- End custom js for this page -->
+</body>
+
+</html>

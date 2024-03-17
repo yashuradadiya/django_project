@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css'%}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css'%}">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    {% include 'sidebar.html'%}   
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Add contact</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/home">Home</a></li>
+              <li class="breadcrumb-item active">Contact</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Contact form</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Name</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Name" name="{{Cdata.name.name}}" value="{% if Cdata.name.value %}{{Cdata.name.value}}{% endif %}">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="{{Cdata.email.name}}" value="{% if Cdata.email.value %}{{Cdata.email.value}}{% endif %}">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">address</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter address" name="{{Cdata.address.name}}" value="{% if Cdata.address.value %}{{Cdata.address.value}}{% endif %}">
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">contact</label>
+                    <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="contact" name="{{Cdata.contact.name}}" value="{% if Cdata.contact.value %}{{Cdata.contact.value}}{% endif %}">
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <input type="hidden" id="custId" name="{{Cdata.user_id.name}}" value="{% if Cdata.user_id.value %}{{Cdata.user_id.value}}{% else %}{{user_id}}{% endif %}">
+                <div class="card-footer">
+                  <!-- <input type="submit" name="submit" id=""class="btn btn-primary"> -->
+                  <button type="submit" class="btn btn-primary" name="save" value="save">Submit</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+           
+
+          </div>
+       
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- bs-custom-file-input -->
+<script src="{% static 'plugins/bs-custom-file-input/bs-custom-file-input.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'dist/js/demo.js' %}"></script>
+<!-- Page specific script -->
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
+</body>
+</html>
